@@ -1,0 +1,33 @@
+
+  673  bin/hdfs namenode -format
+  674  sbin/start-all.sh
+  675  jps
+  676  export CLASSPATH=$CLASSPATH:"/home/comp-sl2-23/Desktop/path/*"
+  677  bin/hadoop com.sun.tools.javac.Main WordCount.java
+  678  jar cf wc.jar WordCount*.class
+  679  bin/hadoop fs -mkdir -p /user/comp-sl2-23/input
+  680  bin/hadoop fs -copyFromLocal /home/comp-sl2-23/Desktop/Dataset/2016_s.csv /user/comp-sl2-23/input
+  681  bin/hadoop jar wc.jar WordCount input output
+  682  bin/hadoop fs -copyToLocal output .
+  683  bin/hadoop fs -copyFromLocal /home/comp-sl2-23/Desktop/Dataset/2016.csv /user/comp-sl2-23/input
+  684  bin/hadoop jar wc.jar WordCount input output
+  685  bin/hadoop jar wc.jar WordCount input output1
+  686  bin/hadoop fs -copyToLocal output .
+  687  bin/hadoop com.sun.tools.javac.Main WordCount.java 
+  688  jar cf wc.jar WordCount*.class
+  689  bin/hadoop fs -mkdir -p /user/comp-sl2-23/input
+  690  bin/hadoop fs -copyFromLocal /home/comp-sl2-23/Desktop/Dataset/2016.csv /user/comp-sl2-23/input
+  691  bin/hadoop jar wc.jar WordCount input output2
+  692  bin/hadoop fs -copyToLocal output .
+  693  bin/hadoop com.sun.tools.javac.Main WordCount.java 
+  694  jar cf wc.jar WordCount*.class
+  695  bin/hadoop fs -mkdir -p /user/comp-sl2-23/input
+  696  bin/hadoop fs -copyFromLocal /home/comp-sl2-23/Desktop/Dataset/2016.csv /user/comp-sl2-23/input
+  697  bin/hadoop jar wc.jar WordCount input output3
+  698  bin/hadoop fs -copyToLocal output3 .
+  699  bin/hadoop com.sun.tools.javac.Main WordCount.java 
+  700  sbin/stop-all.sh
+  701  export CLASSPATH=$CLASSPATH:"/home/comp-sl2-23/Desktop/path/*"
+  702  cat history >> p.txt
+  703  history
+  704  history >> p.txt
