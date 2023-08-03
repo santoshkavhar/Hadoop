@@ -1,0 +1,35 @@
+
+cd hadoop-2.9.2/
+
+sbin/start-all.sh
+// might need to press 'y' as and when needed
+sbin/stop-all.sh
+
+bin/hdfs namenode -format
+sbin/start-all.sh
+export CLASSPATH=$CLASSPATH:"/usr/lib/jvm/path/*"
+
+*********// for wordcount program
+// keep WordCount.java at /opt/hadoop-2.9.2
+bin/hadoop com.sun.tools.javac.Main WordCount.java
+// create its jar
+jar cf wc.jar WordCount*.class
+// make a directory named as input
+bin/hadoop fs -mkdir -p /user/compsl2-22/input
+// copy a file named "README.txt" from current working directory to input directory
+bin/hadoop fs -copyFromLocal README.txt /user/comp-sl2-22/input
+// execute and store output of the program into output named directory
+bin/hadoop jar wc.jar WordCount input output
+//store output to current working directory
+bin/hadoop fs -copyToLocal output .
+
+
+********// Similarly for movie program
+// keep Movie.java at /opt/hadoop-2.9.2
+bin/hadoop com.sun.tools.javac.Main Movie.java
+jar cf wc.jar Movie*.class
+bin/hadoop fs -mkdir -p /user/comp-sl2-22/input1
+bin/hadoop fs -copyFromLocal rat.csv /user/comp-sl2-22/input1
+bin/hadoop jar wc.jar SnowDepthYearWise input1 output1
+bin/hadoop jar wc.jar Movie input1 output1
+

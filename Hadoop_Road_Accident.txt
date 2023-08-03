@@ -1,0 +1,104 @@
+2019 IEEE International Conference on Big Data (BIGDATA)
+
+Data Analysis using Hadoop MapReduce Environment
+
+Abstract - This project deals with analysis of  data using
+Hadoop MapReduce framework and data visulaisation using tableau to find the relationship between snowfall and road accidents.
+Hadoop multi node cluster was setup in our college's Innovation Lab with 1 name node and 7 data nodes. The road accident statistics along with noaa global historical climatology obtained from kaggle is stored into the HDFS (Hadoop Distributed File System) and the data processing is done by the MapReduce system.
+
+
+
+This project enables us to analyze major reasons behind road accident and to find ,if any relation exist between snow and number of road accidents. This helps in making decisions to reduce the area of road accident by improving in those areas or creating awareness in it so as to safe people.
+
+
+Keywords- Hadoop, MapReduce, HDFS, kaggle.
+
+1 Introduction
+Analysis of large scale data sets has been a challenging task but with the advent of Apache Hadoop, data processing is done at a very high speed. Processing big data demands attention because of the significant value that can be gained out of data analytics. Data should be available in a consistent and a structured manner which gives meaning to it. For this purpose, Apache Hadoop is employed to support distributed storage and processing of the data. Hadoop also favors flexibility and high amount of storage. The scope of the project includes setting up of a Hadoop environment in Innovation Lab on 8 similar machines V530 Tower Lenovo Gen-8, i5, 8GB DDR4, with Ubuntu 18.04 Operating System.
+Hadoop is a popular implementation of MapReduce framework, along with HDFS. It is in this Hadoop environment where our application will do its data crunching. To summarize our
+project merges cluster computing and Hadoop to do large scale data intensive distributed computing of data analysis jobs.
+There is an exponential growth of data on weather and road accidents and with that there is a big burden of data storage & analysis. Processing big data demands attention because of the significant value that can be gained out of data analytics. In this project, We have performed data analysis on recorded data. Road Accident cause and snowfall's contribution analysis is the primary goal of the project.Road provides a mode of transportation which has been in use since the dawn of civilization.Its also an opportunity to the people
+around the world to connect and inspire others through their adventures.
+In this project, we have collected the dataset from kaggle[5]. The weather dataset include various attributes[6] 
+This data is stored in HDFS (Hadoop Distributed File System). Apache Hadoop provides MapReduce Framework which is popularly used programming model for analyzing large data sets.
+The road accident data set is analyzed using MapReduce Algorithm on another set of attributes[7]
+
+Hadoop Distributed File System is the core component popularly
+known as the backbone of Hadoop Ecosystem. HDFS is the one,
+which makes it possible to store different types of large data sets (i.e. structured, unstructured and semi structured data). HDFS has two core components, i.e. Name Node and Data Node. The Name Node is the main node and it doesn't store the actual data but contains metadata. Actual data is stored on the Data Nodes and hence it requires more storage resources. MapReduce is a software framework which helps in writing applications that processes large data sets using distributed and parallel algorithms inside Hadoop environment. It is the core component of processing in a Hadoop Ecosystem as it provides the logic of processing. In a MapReduce program, Map() and Reduce() are two functions. The Map function performs actions like filtering, grouping and sorting. While Reduce function aggregates and summarizes the result produced by map function.
+
+The data is stored in a CSV file format. After connecting to the
+we need to feed the search query to get the desired results. I have
+
+
+The information about the videos uploaded on YouTube are
+collected and fed into the Hadoop File System. This system offers
+reliable storage system for the large amount of data collected. HDFS
+allows applications to access data from it with the help of YARN.
+The name node in HDFS monitors access to the files stored in it.
+The Data Nodes allows to do read/write activities of the file and
+contains the data and metadata of the files.
+
+For our system, we firstly fetch YouTube data i.e. Video ID,
+Uploader, Age, Category, Length, views, ratings, comments, etc.
+and store in our HDFS using YouTube APIs. This data is further
+processed by our mapper class and output stored in local file system.
+Then reducer class further applies our business logic on this locally
+intermediate data and processes it. The final output is finally stored
+in HDFS again.
+Hadoop Architecture consists of name node and data node. The
+name node stores the metadata of the data collected from YouTube.
+Whenever client wants to operate on the data, the name node is
+responsible to find out the data node in which the data resides. The
+data nodes keep sending heartbeat calls to the name node to ensure
+the correct metadata structure. For actual processing, resource
+manager comes into picture. It allocates the resources for our
+MapReduce job and performs the same on the data nodes itself,
+hence the data nodes only act as node managers. This is done
+because we need a data intensive computation. The node managers
+process the data and again store it on HDFS.
+
+The MapReduce program obtains the data for processing from the
+HDFS. This code is written in java and the mapper program tried to
+perform a summary operation. The key significance of using the
+MapReduce framework is that it offers scalability and a costeffective solution to the problem. The map reduce code is composed
+into jar file and run using Hadoop jar command. The results of top
+five video categories and top five uploaders with maximum video
+uploads will be displayed on a web server by designing a user
+friendly front-end view of the application.
+
+Installation of Hadoop
+
+Data Analysis plays an important role in determining business
+and marketing strategies. This project can play a key role in
+helping saving lifes of the people by category the reasons for road accident. The accident data
+API is useful to retrieve data from the website and then process it
+in a Hadoop MapReduce environment. To further develop the
+significance of the project, future work can be focused more on
+transforming these data into decisions which has good impact on
+
+The results of the analysis are shown in a graphical format using
+pie charts and bar graphs. The top five reasons for road accident
+are listed in a pie chart with different colors for each different
+category namely ------------------. Along with the pie chart, a table
+list is shown with most top factors at the top of the list
+displaying the category name and total number of videos in that
+category. Top 5 factors with highest number of accidents is displayed in a bar graph showing the count of videos.
+Also, top five factors with highest number of accidents are listed in a
+tabular format. All these statistics helps in understanding the data
+analysis of road accident in simpler format.
+
+.This can be used in businesses that extracts useful
+information from unstructured data.
+
+
+5
+
+i. Weather Dataset-> https://www.kaggle.com/noaa/noaa-global-historical-climatology-network-daily#readme.txt
+ii. Road-accident-> https://drive.google.com/file/d/1otFlF0cpdcUpRA_fKsBTBY_dzkHZM2gA/view?usp=drive_web
+(Motor_Vehicle_Crashes_-_Vehicle_Information__Three_Year_Window.csv)
+
+6
+Attributes like station identifier (GHCN Daily Identification Number) , date (yyyymmdd; where yyyy=year; mm=month; and, dd=day) observation type (see ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/readme.txt for definitions) , observation value (see ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/readme.txt for units), observation time (if available, as hhmm where hh=hour and mm=minutes in local time), and in one column combination of Daily maximum temperature, Daily minimum temperature, Temperature at the time of observation, Precipitation (i.e., rain, melted snow, Snowfall, Snow depth.
+7
+put attributes here
